@@ -12,16 +12,18 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
-        backgroundColor: Color(0xFF1A1A2E), // Dark blue
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.white),
-          onPressed: () {
-            Scaffold.of(context).openDrawer(); // Open drawer
-          },
-        ),
-      ),
+  title: Text('Favorites'),
+  backgroundColor: Color(0xFF1A1A2E), // Dark blue
+  elevation: 0,
+  leading: Builder(
+    builder: (context) => IconButton(
+      icon: Icon(Icons.menu, color: Colors.white),
+      onPressed: () {
+        Scaffold.of(context).openDrawer(); // Open drawer
+      },
+    ),
+  ),
+),
       drawer: AppDrawer(), // Use the drawer
       backgroundColor: Color(0xFF1A1A2E), // Dark blue
       body: GridView.builder(

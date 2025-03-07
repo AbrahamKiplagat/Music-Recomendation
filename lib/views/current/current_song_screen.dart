@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../models/song_model.dart';
-import '../drawer.dart'; // Import the drawer
-
+import '../drawer.dart'; 
 class CurrentSongScreen extends StatelessWidget {
   final Song currentSong;
 
@@ -11,15 +10,17 @@ class CurrentSongScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF1A1A2E), // Dark blue
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: Colors.white),
-          onPressed: () {
-            Scaffold.of(context).openDrawer(); // Open drawer
-          },
-        ),
-      ),
+  backgroundColor: Color(0xFF1A1A2E), // Dark blue
+  elevation: 0,
+  leading: Builder(
+    builder: (context) => IconButton(
+      icon: Icon(Icons.menu, color: Colors.white),
+      onPressed: () {
+        Scaffold.of(context).openDrawer(); // Open drawer
+      },
+    ),
+  ),
+),
       drawer: AppDrawer(), // Use the drawer
       backgroundColor: Color(0xFF1A1A2E), // Dark blue
       body: Column(
@@ -69,72 +70,7 @@ class CurrentSongScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                Slider(
-                  value: 0.5, // Example progress
-                  onChanged: (value) {
-                    // Update progress
-                  },
-                  activeColor: Color(0xFFFFD700), // Gold
-                  inactiveColor: Colors.grey,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      '1:30', // Example current time
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    Text(
-                      '3:45', // Example total time
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.shuffle, color: Colors.grey, size: 30),
-                      onPressed: () {
-                        // Shuffle songs
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.skip_previous, color: Colors.white, size: 40),
-                      onPressed: () {
-                        // Previous song
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.play_circle_filled, color: Color(0xFFFFD700)), // Gold
-                      iconSize: 60,
-                      onPressed: () {
-                        // Play/pause
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.skip_next, color: Colors.white, size: 40),
-                      onPressed: () {
-                        // Next song
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.repeat, color: Colors.grey, size: 30),
-                      onPressed: () {
-                        // Repeat songs
-                      },
-                    ),
-                  ],
-                ),
-                SizedBox(height: 20),
-              ],
-            ),
-          ),
+          // Existing code...
         ],
       ),
     );
